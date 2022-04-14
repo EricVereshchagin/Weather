@@ -2,7 +2,7 @@
 
 namespace Weather.Core.Parser
 {
-    class WeatherByHour
+    public class WeatherByHour
     {
         public TimeSpan Time { get; set; }
         public double Temperature { get; set;}

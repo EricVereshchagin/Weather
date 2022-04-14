@@ -2,10 +2,10 @@
 
 namespace Weather.Core.Parser
 {
-    class City
+    public class City
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string Url { get; set; }
+        public string URL { get; set; }
     }
 }

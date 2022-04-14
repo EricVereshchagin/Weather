@@ -2,10 +2,10 @@
 
 namespace Weather.Core.Parser
 {
-    interface IParser
+    public interface IParser
     {
-        List<City> GetPopularCities();
+        public List<City> GetPopularCities();
 
-        List<WeatherForDay> GetWeatherForTenDays(City city);
+        public List<WeatherForDay> GetWeatherForTenDays(City city);
     }
 }

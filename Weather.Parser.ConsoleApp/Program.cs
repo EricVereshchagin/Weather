@@ -1,4 +1,6 @@
 ﻿using System;
+using Weather.Parser.Gismeteo;
+using Weather.Core.Parser;
 
 namespace Weather.Parser.ConsoleApp
 {
@@ -6,7 +8,13 @@ namespace Weather.Parser.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Start();
+        }
+
+        static void Start()
+        {
+            ParserGismeteo test = new ParserGismeteo();// TO DO DI 
+            var cities = test.GetPopularCities();
         }
     }
 }
