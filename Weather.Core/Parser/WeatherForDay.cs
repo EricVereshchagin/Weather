@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Weather.Core.Parser
 {
     class WeatherForDay
     {
+        public DateTime Day { get; set; }
+        public SortedDictionary<TimeSpan, WeatherByHour> WeatherByHours { get; set; }
     }
 }

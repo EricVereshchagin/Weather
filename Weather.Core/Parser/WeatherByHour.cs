@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Weather.Core.Parser
 {
-    class HourWeather
+    class WeatherByHour
     {
+        public TimeSpan Time { get; set; }
+        public double Temperature { get; set;}
+        public string SpeedWind { get; set; }
+        public double AmountPrecipitation { get; set; }
     }
 }

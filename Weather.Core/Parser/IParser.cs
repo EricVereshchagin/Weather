@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Weather.Core.Parser
 {
     interface IParser
     {
+        List<City> GetPopularCities();
+
+        List<WeatherForDay> GetWeatherForTenDays(City city);
     }
 }
