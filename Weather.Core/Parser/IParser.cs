@@ -6,6 +6,6 @@ namespace Weather.Core.Parser
     {
         public List<City> GetPopularCities();
 
-        public List<WeatherForDay> GetWeatherForTenDays(City city);
+        public List<WeatherForDayShort> GetShortWeatherForTenDays(City city);
     }
 }

@@ -13,8 +13,14 @@ namespace Weather.Parser.ConsoleApp
 
         static void Start()
         {
-            ParserGismeteo test = new ParserGismeteo();// TO DO DI 
+            ParserGismeteo test = new ParserGismeteo();// TO DO DI // репозиторий // какой-то тамер посмотреть
             var cities = test.GetPopularCities();
+            foreach (var city in cities)
+            {
+                var weatherForTenDays = test.GetShortWeatherForTenDays(city);
+
+            }
+            
         }
     }
 }
