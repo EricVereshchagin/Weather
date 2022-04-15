@@ -1,6 +1,6 @@
-﻿using System;
+﻿using System.Timers;
 using Weather.Parser.Gismeteo;
-using Weather.Core.Parser;
+using System;
 
 namespace Weather.Parser.ConsoleApp
 {
@@ -8,17 +8,29 @@ namespace Weather.Parser.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Start();
+            Parsing();
+            RepeatParsing(60 * 60 * 1000); // 1hour;
+            Console.ReadLine();
         }
 
-        static void Start()
+        static void RepeatParsing(double interval)
         {
-            ParserGismeteo test = new ParserGismeteo();// TO DO DI // репозиторий // какой-то тамер посмотреть
+            Timer timer = new Timer(interval);
+            timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+            timer.Start();
+        }
+
+        static void OnTimedEvent(object source, ElapsedEventArgs e)
+        {
+            Parsing();
+        }
+        static void Parsing()
+        {
+            ParserGismeteo test = new ParserGismeteo();// TO DO DI 
             var cities = test.GetPopularCities();
             foreach (var city in cities)
             {
-                var weatherForTenDays = test.GetShortWeatherForTenDays(city);
-
+                var weatherForTenDays = test.GetWeatherForDays(city);
             }
             
         }
