@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.Parser.ConsoleApp",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.Parser.Gismeteo", "Weather.Parser.Gismeteo\Weather.Parser.Gismeteo.csproj", "{DE88B6C9-16F7-441F-B338-488D29344654}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.Infrastructure", "Weather.Repository\Weather.Infrastructure.csproj", "{A626303D-C1F4-48D2-835C-CD120A2F2AD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.Infrastructure", "Weather.Repository\Weather.Infrastructure.csproj", "{A626303D-C1F4-48D2-835C-CD120A2F2AD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.Autofac", "Weather.Autofac\Weather.Autofac.csproj", "{86E5616F-19B7-4883-8ABA-1428D52CFC3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{A626303D-C1F4-48D2-835C-CD120A2F2AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A626303D-C1F4-48D2-835C-CD120A2F2AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A626303D-C1F4-48D2-835C-CD120A2F2AD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86E5616F-19B7-4883-8ABA-1428D52CFC3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86E5616F-19B7-4883-8ABA-1428D52CFC3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86E5616F-19B7-4883-8ABA-1428D52CFC3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86E5616F-19B7-4883-8ABA-1428D52CFC3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

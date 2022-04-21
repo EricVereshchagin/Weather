@@ -27,8 +27,8 @@ namespace Weather.Infrastructure.Database
             var filterWeather = Builders<TemperatureToDb>.Filter.And(
                    Builders<TemperatureToDb>.Filter.In(w => w.Id, _cities.AsQueryable().FirstOrDefault(c => c.Id == ObjectId.Parse(cityId))?.TemperatureInfo),
                    Builders<TemperatureToDb>.Filter.Eq(w => w.Day, DateTime.SpecifyKind(dateTime, DateTimeKind.Utc)));
-           var temp = _temperature.Find(filterWeather).FirstOrDefault();
-            return new Temperature {TemperatureFrom = temp.TemperatureFrom, TemperatureTo = temp.TemperatureTo }; 
+           var temp = _temperature.Find(filterWeather)?.FirstOrDefault();
+            return temp is not null ? new Temperature {TemperatureFrom = temp.TemperatureFrom, TemperatureTo = temp.TemperatureTo } : null; 
         }
     }
 }

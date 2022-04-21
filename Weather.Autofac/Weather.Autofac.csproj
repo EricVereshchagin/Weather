@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
@@ -10,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Weather.Autofac\Weather.Autofac.csproj" />
+    <ProjectReference Include="..\Weather.Core\Weather.Core.csproj" />
     <ProjectReference Include="..\Weather.Parser.Gismeteo\Weather.Parser.Gismeteo.csproj" />
     <ProjectReference Include="..\Weather.Repository\Weather.Infrastructure.csproj" />
   </ItemGroup>

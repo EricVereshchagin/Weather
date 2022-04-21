@@ -1,11 +1,11 @@
 ﻿using System.Timers;
-using Weather.Parser.Gismeteo;
 using System;
-using System.Collections.Generic;
 using Weather.Core.Parser;
 using Weather.Infrastructure.Database;
-using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
+using Weather.Autofac;
+using Autofac;
+using Weather.Core.Data;
 
 namespace Weather.Parser.ConsoleApp
 {
@@ -13,10 +13,9 @@ namespace Weather.Parser.ConsoleApp
     {
         static void Main(string[] args)
         {
-            //DbClient client = new DbClient(new WeatherDbConfig());
-
-            //ParsingAndLoad(client);
-            //RepeatParsing(60 * 60 * 1000); // 1hour;
+            AutofucConfig.ConfigureContainer();
+            ParsingAndLoad();
+            RepeatParsing(60 * 60 * 1000); // 1hour;
             Console.ReadLine();
             
         }
@@ -30,18 +29,19 @@ namespace Weather.Parser.ConsoleApp
 
         static void OnTimedEvent(object source, ElapsedEventArgs e)
         {
-            //ParsingAndLoad();
+            ParsingAndLoad();
         }
 
-        static void ParsingAndLoad(DbClient client)
+        static void ParsingAndLoad()
         {
-            ParserGismeteo test = new ParserGismeteo();
-            var loadService = new WeatherLoadServices(client);
+            var client = AutofucConfig.Container.Resolve<IDbClient>();
+            var parser = AutofucConfig.Container.Resolve<IParser>();
+            var loadService = AutofucConfig.Container.Resolve<ILoaderData<WeatherForDayShort>>();
+            var cities = parser.GetCities();
 
-            var cities = test.GetCities();
             Parallel.ForEach(cities, async (city) =>
             {
-                await loadService.LoadDataWeather(city.Name, test.GetWeatherForDays(city));
+                await loadService.LoadDataWeather(city.Name, parser.GetWeatherForDays(city));
             });
         }
     }

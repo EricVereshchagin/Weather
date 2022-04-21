@@ -22,8 +22,9 @@ namespace Weather.WebAPI.ASP.NET_Core.Controllers
 
         [HttpGet("{id}/{time}")]
         public IActionResult GetWeather(string id, DateTime time)
-        {   
-            return Ok(_weatherServices.GetTemperature(id, time));
+        {
+            var weather = _weatherServices.GetTemperature(id, time);
+            return weather is not null ? Ok(weather) : NotFound();
         }
     }
 }

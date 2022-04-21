@@ -10,12 +10,12 @@ namespace Weather.Infrastructure.Database
         private readonly IMongoCollection<CityToDb> _cities;
 
       
-        public DbClient(IOptions<WeatherDbConfig> bookstoreDbConfig)
+        public DbClient(IOptions<WeatherDbConfig> DbConfig)
         {
-            var client = new MongoClient(bookstoreDbConfig.Value.Connection_String);
-            var database = client.GetDatabase(bookstoreDbConfig.Value.Database_Name);
-            _temperature = database.GetCollection<TemperatureToDb>(bookstoreDbConfig.Value.Weather_Collection_Name);
-            _cities = database.GetCollection<CityToDb>(bookstoreDbConfig.Value.City_Collection_Name);
+            var client = new MongoClient(DbConfig.Value.Connection_String);
+            var database = client.GetDatabase(DbConfig.Value.Database_Name);
+            _temperature = database.GetCollection<TemperatureToDb>(DbConfig.Value.Weather_Collection_Name);
+            _cities = database.GetCollection<CityToDb>(DbConfig.Value.City_Collection_Name);
         }
 
         public IMongoCollection<CityToDb> GetCityCollection() => _cities;
