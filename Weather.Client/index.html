@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weather</title>
+   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="uikit-3.13.10/css/uikit.min.css" />
+        <script src="uikit-3.13.10/js/uikit.min.js"></script>
+        <script src="uikit-3.13.10/js/uikit-icons.min.js"></script>
+ </head>
+ <body>
+	<form class="uk-position-medium uk-position-top-left uk-width-1-4">
+		<fieldset class="uk-fieldset">
+			<legend class="uk-legend">Погода</legend>
+			<div class="uk-margin">
+				<input class="uk-input" type="date" placeholder="Input" id="date-time">	
+			</div>
+			<div class="uk-margin">
+			    <select class="uk-select" id="select-cities"></select>
+			</div>  
+	</form>
+	 <div class="uk-margin" id="result"></div>
+	<button class="uk-button uk-button-default search-button">Поиск</button> 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <script type="text/javascript" src="script.js"></script>
+ </body>
+
+</html>
