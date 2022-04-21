@@ -13,9 +13,13 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+        "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development",
+            "DATABASE_NAME": "weather_db",
+            "CITY_COLLECTION_NAME": "cities",
+            "WEATHER_COLLECTION_NAME": "temperature",
+            "CONNECTION_STRING": "mongodb://127.0.0.1:27017"
+        }
     },
     "Weather.WebAPI.ASP.NET_Core": {
       "commandName": "Project",
@@ -23,9 +27,13 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+        "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development",
+            "DATABASE_NAME": "weather_db",
+            "CITY_COLLECTION_NAME": "cities",
+            "WEATHER_COLLECTION_NAME": "temperature",
+            "CONNECTION_STRING": "mongodb://127.0.0.1:27017"
+        }
     }
   }
 }

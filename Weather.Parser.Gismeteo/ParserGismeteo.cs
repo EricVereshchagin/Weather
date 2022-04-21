@@ -7,11 +7,11 @@ using HtmlAgilityPack;
 
 namespace Weather.Parser.Gismeteo
 {
-    public class ParserGismeteo : IParser<WeatherForDayShort>
+    public class ParserGismeteo : IParser
     {
         private readonly static string[] _daysForLink = { "", "tomorrow", "3-day", "4-day", "5-day", "6-day", "7-day", "8-day", "9-day", "10-day" };
         private readonly static string _mainURL = @"https://www.gismeteo.ru/";
-        public List<City> GetPopularCities()
+        public List<City> GetCities()
         {
             
             var htmlDoc = new HtmlWeb().Load(_mainURL);
@@ -47,7 +47,7 @@ namespace Weather.Parser.Gismeteo
 
         public List<WeatherForDayShort> GetWeatherForDays(City city)
         {
-            var nowTime = DateTime.Today;
+            var nowTime = DateTime.SpecifyKind(DateTime.Today, DateTimeKind.Utc);
             List<WeatherForDayShort> weatherForTenDays = new List<WeatherForDayShort>();
             foreach (string dayForLink in _daysForLink)
             {

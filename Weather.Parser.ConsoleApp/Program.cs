@@ -1,6 +1,11 @@
 ﻿using System.Timers;
 using Weather.Parser.Gismeteo;
 using System;
+using System.Collections.Generic;
+using Weather.Core.Parser;
+using Weather.Infrastructure.Database;
+using Microsoft.Extensions.Options;
+using System.Threading.Tasks;
 
 namespace Weather.Parser.ConsoleApp
 {
@@ -8,9 +13,12 @@ namespace Weather.Parser.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Parsing();
-            RepeatParsing(60 * 60 * 1000); // 1hour;
+            //DbClient client = new DbClient(new WeatherDbConfig());
+
+            //ParsingAndLoad(client);
+            //RepeatParsing(60 * 60 * 1000); // 1hour;
             Console.ReadLine();
+            
         }
 
         static void RepeatParsing(double interval)
@@ -22,17 +30,19 @@ namespace Weather.Parser.ConsoleApp
 
         static void OnTimedEvent(object source, ElapsedEventArgs e)
         {
-            Parsing();
+            //ParsingAndLoad();
         }
-        static void Parsing()
+
+        static void ParsingAndLoad(DbClient client)
         {
-            ParserGismeteo test = new ParserGismeteo();// TO DO DI 
-            var cities = test.GetPopularCities();
-            foreach (var city in cities)
+            ParserGismeteo test = new ParserGismeteo();
+            var loadService = new WeatherLoadServices(client);
+
+            var cities = test.GetCities();
+            Parallel.ForEach(cities, async (city) =>
             {
-                var weatherForTenDays = test.GetWeatherForDays(city);
-            }
-            
+                await loadService.LoadDataWeather(city.Name, test.GetWeatherForDays(city));
+            });
         }
     }
 }

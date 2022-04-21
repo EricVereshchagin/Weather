@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Weather.Core.Parser
+namespace Weather.Core.API
 {
-    public class WeatherForDayShort 
-    {   public DateTime Day { get; set; }
+    public class Temperature
+    {
         public double TemperatureFrom { get; set; }
         public double TemperatureTo { get; set; }
     }
